@@ -76,7 +76,7 @@ jobs:
 
       - name: Run actionlint (reviewdog)
         if: github.event_name == 'pull_request'
-        uses: reviewdog/action-actionlint@0d952c597ef8459f634d7145b0b044a9699e5e43 # v1.71.0
+        uses: reviewdog/action-actionlint@6fb7acc99f4a1008869fa8a0f09cfca740837d9d # v1.72.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
@@ -107,7 +107,7 @@ jobs:
 
       - name: Lint Markdown
         if: github.event_name != 'pull_request'
-        run: npx --yes markdownlint-cli2@0.21.0 .
+        run: npx --yes markdownlint-cli2@0.22.0 .
 
       - name: Set up reviewdog
         if: github.event_name == 'pull_request'
@@ -119,7 +119,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           markdownlint_rc=0
-          npx --yes markdownlint-cli2@0.21.0 . > /tmp/markdownlint-report.txt 2>&1 || markdownlint_rc=$?
+          npx --yes markdownlint-cli2@0.22.0 . > /tmp/markdownlint-report.txt 2>&1 || markdownlint_rc=$?
           reviewdog_rc=0
           reviewdog < /tmp/markdownlint-report.txt \
               -efm="%f:%l:%c %m" \
@@ -265,7 +265,7 @@ jobs:
 
       - name: Check spelling
         if: github.event_name != 'pull_request'
-        uses: crate-ci/typos@631208b7aac2daa8b707f55e7331f9112b0e062d # v1.44.0
+        uses: crate-ci/typos@02ea592e44b3a53c302f697cddca7641cd051c3d # v1.45.0
         with:
           files: |
             .
@@ -292,7 +292,7 @@ jobs:
           persist-credentials: false
 
       - name: Set up Commitizen
-        uses: commitizen-tools/setup-cz@578def531656e522cd8978e6df62d626593e0a5f # v0.7.0
+        uses: commitizen-tools/setup-cz@35ba1f590034c467c30355832e6b5cf873b82f6c # v0.8.0
         with:
           python-version: '3.x'
           version: '4.13.9'
