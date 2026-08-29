@@ -1,5 +1,10 @@
 # Bump Version by Labels
 
+> [!CAUTION]
+> This repository is deprecated. `v2.0.4` is the final release in this repository.
+> Future releases are published from [`conjikidow/bump-version-action`](https://github.com/conjikidow/bump-version-action).
+> To migrate, change `uses: conjikidow/bump-version@...` to `uses: conjikidow/bump-version-action@...`.
+
 This GitHub Action automatically bumps the project version based on pull request (PR) labels and creates a PR.
 Once the version bump PR is merged, it automatically creates a new tag and a release (optional) for the bumped version.
 
@@ -46,7 +51,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Bump Version
-        uses: conjikidow/bump-version@v2.0.2
+        uses: conjikidow/bump-version@v2.0.4
         with:
           label-major: 'major update'
           label-minor: 'minor update'
@@ -78,7 +83,7 @@ jobs:
     steps:
       - name: Bump Version
         id: bump-version
-        uses: conjikidow/bump-version@v2.0.2
+        uses: conjikidow/bump-version@v2.0.4
 
       # This step is just a placeholder. You can replace it with your own script or external tools.
       - name: Create Release Notes
